@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Appointments - Hospital</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Common CSS -->
+    <link rel="stylesheet" href="css/styles.css">
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css" rel="stylesheet">
+    <!-- Page-Specific CSS -->
+    <style>
+        /* Emergency Contact */
+        .emergency-contact {
+            background-color: #dc3545;
+            color: white;
+            padding: 5px 15px;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.05);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        .calendar-container {
+            max-width: 900px;
+            margin: 20px auto;
+            background: #fff;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+
+        .calendar-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .calendar-days {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 5px;
+            text-align: center;
+        }
+
+        .calendar-day {
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .calendar-day:hover:not(.disabled) {
+            background-color: #e9ecef;
+        }
+
+        .calendar-day.available {
+            background-color: #d4edda;
+        }
+
+        .calendar-day.selected {
+            background-color: #007bff;
+            color: white;
+            border-color: #0056b3;
+        }
+
+        .calendar-day.disabled {
+            background-color: #f8f9fa;
+            color: #6c757d;
+            cursor: not-allowed;
+        }
+
+        .time-slots {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .time-slot {
+            padding: 8px 12px;
+            border: none;
+            border-radius: 20px;
+            background-color: #f0f0f0;
+            color: #333;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .time-slot:hover:not(.selected) {
+            background-color: #e0e0e0;
+        }
+
+        .time-slot.selected {
+            background-color: #007bff;
+            color: white;
+        }
+
+        .doctor-select-container {
+            max-width: 500px;
+            margin: 0 auto 30px;
+        }
+
+        .selection-message {
+            margin-top: 15px;
+            padding: 15px;
+            background-color: #4138e1;
+            color: white;
+            border-radius: 10px;
+            text-align: center;
+            font-weight: bolder;
+            animation: fadeIn 0.5s ease-in;
+            display: none;
+        }
+
+        .selection-message.show {
+            display: block;
+        }
+
+        .selection-message .cancel-btn {
+            background-color: #dc3545;
+            border: none;
+            padding: 5px 15px;
+            margin-right: 5px;
+            border-radius: 20px;
+            color: white;
+            font-size: 14px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .selection-message .cancel-btn:hover {
+            background-color: #c82333;
+        }
+
+        .patient-form-section {
+            margin-top: 30px;
+            padding: 20px;
+            border-radius: 10px;
+            display: none;
+        }
+
+        .patient-form-section.show {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .calendar-days {
+                grid-template-columns: repeat(4, 1fr);
+            }
+
+            .time-slots {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .selection-message {
+                font-size: 14px;
+                padding: 10px;
+            }
+
+            .patient-form-section {
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="sticky-top bg-white shadow-sm">
+        <div class="container py-2">
+            <div class="row align-items-center">
+                <div class="col-6 col-md-3">
+                    <img src="/logo.jpeg" alt="Hospital Logo" class="img-fluid" style="max-height: 50px;">
+                </div>
+                <div class="col-6 col-md-6">
+                    <nav class="navbar navbar-expand-md">
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#navbarNav">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="collapse navbar-collapse" id="navbarNav">
+                            <ul class="navbar-nav mx-auto">
+                                <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                                <li class="nav-item"><a class="nav-link" href="aboutus.html">About Us</a></li>
+                                <li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
+                                <li class="nav-item"><a class="nav-link" href="Teams.html">Doctors</a></li>
+                                <li class="nav-item"><a class="nav-link active" href="appointment.html">Appointments</a>
+                                </li>
+                                <li class="nav-item"><a class="nav-link" href="contactus.html">Contact Us</a></li>
+                            </ul>
+                        </div>
+                    </nav>
+                </div>
+                <div class="col-md-3 text-end d-none d-md-block">
+                    <a href="#" class="btn btn-primary">Appointment Form</a>
+                    
+                </div>
+            </div>
+            <div class="emergency-contact text-center mt-2">
+                Emergency: <strong>1-800-555-HELP</strong>
+            </div>
+        </div>
+    </header>
+
+    <!-- Appointment Section -->
+    <section class="py-5">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h1 >Book an Appointment</h1>
+                <p>To schedule an appointment, please fill out the information below.</p>
+            </div>
+            <!-- Doctor Selection -->
+            <div class="doctor-select-container fade-in">
+                <label for="doctor-select" class="form-label">Select Doctor & Specialization</label>
+                <select id="doctor-select" class="form-select" aria-label="Select doctor">
+                    <option value="general">Orthopedic Surgeon</option>
+                    <option value="general">General Practitioner</option>
+                </select>
+            </div>
+
+            <!-- Single Calendar Container with Slots and Form -->
+            <div class="calendar-container fade-in">
+                <div class="row">
+                    <!-- Calendar Column -->
+                    <div class="col-md-6">
+                        <div class="calendar-header">
+                            <button class="btn btn-secondary" id="prev-month"><i
+                                    class="bi bi-chevron-left"></i></button>
+                            <h3 id="month-year" class="text-center mb-0"></h3>
+                            <button class="btn btn-secondary" id="next-month"><i
+                                    class="bi bi-chevron-right"></i></button>
+                        </div>
+                        <div class="calendar-days" id="calendar-days">
+                            <!-- Days populated by JS -->
+                        </div>
+                        
+                    </div>
+
+                    <!-- Time Slots Column -->
+                    <div class="col-md-6">
+                        <h4 class="text-center mb-3" id="selected-date">Select a date to see available slots</h4>
+                        <div class="time-slots d-flex flex-wrap gap-2 justify-content-center" id="time-slots">
+                            <!-- Time slots populated dynamically as badges -->
+                        </div>
+                       
+                    </div>
+                    <div class="selection-message" id="selection-message">
+                        <span id="selection-details"></span>&nbsp;&nbsp;
+                        <button class="cancel-btn" id="cancel-selection">Cancel</button>
+                    </div>
+                </div>
+
+                <!-- Patient Details Form Inside Calendar Container -->
+                <div class="patient-form-section" id="appointment-form">
+                    <h3 class="text-center mb-4">Patient Details</h3>
+                    <form id="patient-form">
+                        <div class="mb-3">
+                            <label for="first-name" class="form-label">First Name</label>
+                            <input type="text" class="form-control" id="first-name" required aria-label="First Name">
+                        </div>
+                        <div class="mb-3">
+                            <label for="last-name" class="form-label">Last Name</label>
+                            <input type="text" class="form-control" id="last-name" required aria-label="Last Name">
+                        </div>
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="email" required aria-label="Email">
+                        </div>
+                        <div class="mb-3">
+                            <label for="phone" class="form-label">Phone Number</label>
+                            <input type="tel" class="form-control" id="phone" required aria-label="Phone Number"
+                                pattern="\(\d{3}\) \d{3}-\d{4}" placeholder="(123) 456-7890">
+                        </div>
+                        <div class="mb-3">
+                            <label for="contact-method" class="form-label">Best Method for Contacting You?</label>
+                            <select class="form-select" id="contact-method" required
+                                aria-label="Best method for contacting you">
+                                <option value="">Please Select</option>
+                                <option value="Email">Email</option>
+                                <option value="Phone">Phone</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="contact-time" class="form-label">Best Time of Day to Reach You?</label>
+                            <select class="form-select" id="contact-time" required
+                                aria-label="Best time of day to reach you">
+                                <option value="">Please Select</option>
+                                <option value="Morning">Morning</option>
+                                <option value="Noon">Noon</option>
+                                <option value="Afternoon">Afternoon</option>
+                                <option value="Evening">Evening</option>
+                                <option value="Night">Night</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="help" class="form-label">How Can We Help You?</label>
+                            <textarea class="form-control" id="help" rows="3" required
+                                aria-label="How can we help you"></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label for="notes" class="form-label">Additional Notes</label>
+                            <textarea class="form-control" id="notes" rows="3" aria-label="Additional notes"></textarea>
+                        </div>
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-primary btn-lg">Book Appointment</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-5">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <h5 class="mb-3">Contact Us</h5>
+                    <p class="mb-2">123 Health St, Medical City</p>
+                    <p class="mb-2">Phone: <a href="tel:5551234567" class="text-white text-decoration-none">(555)
+                            123-4567</a></p>
+                    <p class="mb-0">Email: <a href="mailto:info@hospital.com"
+                            class="text-white text-decoration-none">info@hospital.com</a></p>
+                </div>
+                <div class="col-md-4">
+                    <h5 class="mb-3">Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="#" class="text-white text-decoration-none">Privacy Policy</a></li>
+                        <li class="mb-2"><a href="#" class="text-white text-decoration-none">Terms & Conditions</a></li>
+                        <li class="mb-0"><a href="#" class="text-white text-decoration-none">Careers</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h5 class="mb-3">Follow Us</h5>
+                    <div class="mb-4">
+                        <a href="#" class="text-white me-3" aria-label="Facebook"><i
+                                class="bi bi-facebook fs-5"></i></a>
+                        <a href="#" class="text-white me-3" aria-label="Twitter"><i class="bi bi-twitter fs-5"></i></a>
+                        <a href="#" class="text-white" aria-label="LinkedIn"><i class="bi bi-linkedin fs-5"></i></a>
+                    </div>
+                    <h5 class="mb-3">Newsletter</h5>
+                    <form class="newsletter-form">
+                        <div class="input-group">
+                            <input type="email" class="form-control" placeholder="Enter your email" aria-label="Email"
+                                required>
+                            <button type="submit" class="btn btn-primary">Subscribe</button>
+                        </div>
+                        <small class="form-text text-muted">We'll never share your email with anyone else.</small>
+                    </form>
+                </div>
+            </div>
+            <div class="row mt-4">
+                <div class="col text-center">
+                    <p class="mb-0">© 2025 Hospital Name. All rights reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS and Popper.js -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+    <!-- Custom Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const calendarDays = document.getElementById('calendar-days');
+            const timeSlots = document.getElementById('time-slots');
+            const selectedDate = document.getElementById('selected-date');
+            const appointmentForm = document.getElementById('appointment-form');
+            const patientForm = document.getElementById('patient-form');
+            const doctorSelect = document.getElementById('doctor-select');
+            const prevMonthBtn = document.getElementById('prev-month');
+            const nextMonthBtn = document.getElementById('next-month');
+            const monthYear = document.getElementById('month-year');
+            const selectionMessage = document.getElementById('selection-message');
+            const selectionDetails = document.getElementById('selection-details');
+            const cancelSelectionBtn = document.getElementById('cancel-selection');
+            const today = new Date('2025-03-17'); // Current date as of March 17, 2025
+            let currentMonth = today.getMonth();
+            let currentYear = today.getFullYear();
+
+            // Availability data from your form
+            const availability = {
+                'general': {
+                    '2025-03-18': ['11:30 AM', '12:30 PM', '1:30 PM', '4:30 PM', '5:30 PM', '6:30 PM'],
+                    '2025-03-19': ['11:30 AM', '12:30 PM', '1:30 PM', '4:30 PM', '5:30 PM', '6:30 PM'],
+                    '2025-03-20': ['11:30 AM', '12:30 PM', '1:30 PM', '4:30 PM', '5:30 PM', '6:30 PM'],
+                    '2025-03-21': ['11:30 AM', '12:30 PM', '1:30 PM', '4:30 PM', '5:30 PM', '6:30 PM'],
+                    '2025-03-24': ['11:30 AM', '12:30 PM', '1:30 PM', '4:30 PM', '5:30 PM', '6:30 PM'],
+                    '2025-03-25': ['11:30 AM', '12:30 PM', '1:30 PM', '4:30 PM', '5:30 PM', '6:30 PM'],
+                    '2025-03-26': ['11:30 AM', '12:30 PM', '1:30 PM', '4:30 PM', '5:30 PM', '6:30 PM'],
+                    '2025-03-27': ['11:30 AM', '12:30 PM', '1:30 PM', '4:30 PM', '5:30 PM', '6:30 PM'],
+                    '2025-03-28': ['11:30 AM', '12:30 PM', '1:30 PM', '4:30 PM', '5:30 PM', '6:30 PM'],
+                    '2025-03-31': ['11:30 AM', '12:30 PM', '1:30 PM', '4:30 PM', '5:30 PM', '6:30 PM']
+                }
+            };
+            const unavailableDays = [
+                '2025-03-01', '2025-03-02', '2025-03-03', '2025-03-04', '2025-03-05', '2025-03-06', '2025-03-07',
+                '2025-03-08', '2025-03-09', '2025-03-10', '2025-03-11', '2025-03-12', '2025-03-13', '2025-03-14',
+                '2025-03-15', '2025-03-16', '2025-03-17', '2025-03-22', '2025-03-23', '2025-03-29', '2025-03-30'
+            ];
+
+            // Generate Calendar
+            function generateCalendar(month, year) {
+                calendarDays.innerHTML = '';
+                const firstDay = new Date(year, month, 1);
+                const lastDay = new Date(year, month + 1, 0);
+                const daysInMonth = lastDay.getDate();
+                const startDay = firstDay.getDay();
+
+                monthYear.textContent = `${firstDay.toLocaleString('default', { month: 'long' })} ${year}`;
+
+                for (let i = 0; i < startDay; i++) {
+                    const emptyDiv = document.createElement('div');
+                    calendarDays.appendChild(emptyDiv);
+                }
+
+                for (let i = 1; i <= daysInMonth; i++) {
+                    const date = new Date(year, month, i);
+                    const dateStr = date.toISOString().split('T')[0];
+                    const dayDiv = document.createElement('div');
+                    dayDiv.classList.add('calendar-day');
+                    dayDiv.textContent = i;
+                    dayDiv.dataset.date = dateStr;
+
+                    if (date < today || unavailableDays.includes(dateStr)) {
+                        dayDiv.classList.add('disabled');
+                    } else if (availability['general'][dateStr]) {
+                        dayDiv.classList.add('available');
+                        dayDiv.addEventListener('click', function () {
+                            document.querySelectorAll('.calendar-day').forEach(d => d.classList.remove('selected'));
+                            this.classList.add('selected');
+                            selectedDate.textContent = `${date.toDateString()}`;
+                            showTimeSlots(dateStr, 'general');
+                        });
+                    } else {
+                        dayDiv.classList.add('disabled');
+                    }
+                    calendarDays.appendChild(dayDiv);
+                }
+            }
+
+            // Show Time Slots
+            function showTimeSlots(date, doctor) {
+                timeSlots.innerHTML = '';
+                const slots = availability[doctor][date] || [];
+                if (slots.length > 0) {
+                    slots.forEach(slot => {
+                        const slotDiv = document.createElement('div');
+                        slotDiv.classList.add('time-slot', 'badge');
+                        slotDiv.textContent = slot;
+                        slotDiv.addEventListener('click', function () {
+                            document.querySelectorAll('.time-slot').forEach(s => s.classList.remove('selected'));
+                            this.classList.add('selected');
+                            appointmentForm.classList.add('show');
+                            selectionMessage.classList.add('show');
+                            const doctorText = doctorSelect.options[doctorSelect.selectedIndex].text;
+                            selectionDetails.textContent = `Appointment with ${doctorText} on ${date} at ${slot}`;
+                        });
+                        timeSlots.appendChild(slotDiv);
+                    });
+                } else {
+                    timeSlots.innerHTML = '<p class="text-muted">No available slots for this date.</p>';
+                    appointmentForm.classList.remove('show');
+                    selectionMessage.classList.remove('show');
+                }
+            }
+
+            // Month Navigation
+            prevMonthBtn.addEventListener('click', function () {
+                currentMonth--;
+                if (currentMonth < 0) {
+                    currentMonth = 11;
+                    currentYear--;
+                }
+                generateCalendar(currentMonth, currentYear);
+                resetSelection();
+            });
+
+            nextMonthBtn.addEventListener('click', function () {
+                currentMonth++;
+                if (currentMonth > 11) {
+                    currentMonth = 0;
+                    currentYear++;
+                }
+                generateCalendar(currentMonth, currentYear);
+                resetSelection();
+            });
+
+            // Doctor Change
+            doctorSelect.addEventListener('change', function () {
+                generateCalendar(currentMonth, currentYear);
+                resetSelection();
+            });
+
+            // Cancel Selection
+            cancelSelectionBtn.addEventListener('click', function () {
+                resetSelection();
+            });
+
+            // Form Submission
+            patientForm.addEventListener('submit', function (e) {
+                e.preventDefault();
+                const firstName = document.getElementById('first-name').value;
+                const lastName = document.getElementById('last-name').value;
+                const email = document.getElementById('email').value;
+                const phone = document.getElementById('phone').value;
+                const contactMethod = document.getElementById('contact-method').value;
+                const contactTime = document.getElementById('contact-time').value;
+                const help = document.getElementById('help').value;
+                const notes = document.getElementById('notes').value;
+                const selectedDay = document.querySelector('.calendar-day.selected');
+                const selectedTime = document.querySelector('.time-slot.selected');
+
+                if (selectedDay && selectedTime) {
+                    const doctorText = doctorSelect.options[doctorSelect.selectedIndex].text;
+                    alert(`Appointment Booked!\nDoctor: ${doctorText}\nDate: ${selectedDay.dataset.date}\nTime: ${selectedTime.textContent}\nPatient: ${firstName} ${lastName}\nEmail: ${email}\nPhone: ${phone}\nContact Method: ${contactMethod}\nBest Time: ${contactTime}\nHelp: ${help}\nNotes: ${notes}`);
+                    patientForm.reset();
+                    resetSelection();
+                } else {
+                    alert('Please select a date and time slot.');
+                }
+            });
+
+            // Newsletter Form
+            document.querySelector('.newsletter-form').addEventListener('submit', function (e) {
+                e.preventDefault();
+                const email = this.querySelector('input[type="email"]').value;
+                alert(`Subscribed successfully with email: ${email}`);
+                this.reset();
+            });
+
+            // Reset Selection
+            function resetSelection() {
+                timeSlots.innerHTML = '';
+                selectedDate.textContent = 'Select a date to see available slots';
+                appointmentForm.classList.remove('show');
+                selectionMessage.classList.remove('show');
+                document.querySelectorAll('.calendar-day').forEach(d => d.classList.remove('selected'));
+                document.querySelectorAll('.time-slot').forEach(s => s.classList.remove('selected'));
+            }
+
+            // Initial Calendar Load
+            generateCalendar(currentMonth, currentYear);
+        });
+    </script>
+</body>
+
+</html>
