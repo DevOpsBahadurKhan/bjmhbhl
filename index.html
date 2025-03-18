@@ -81,10 +81,12 @@
             padding: 60px 0;
             position: relative;
         }
+
         .testimonial-carousel .carousel-item {
             padding: 20px;
             text-align: center;
         }
+
         .testimonial-card {
             background: rgba(255, 255, 255, 0.9);
             border-radius: 15px;
@@ -94,9 +96,11 @@
             border: 1px solid rgba(255, 255, 255, 0.3);
             transition: transform 0.3s ease;
         }
+
         .testimonial-card:hover {
             transform: translateY(-5px);
         }
+
         .testimonial-img {
             width: 120px;
             height: 120px;
@@ -106,31 +110,39 @@
             margin: 0 auto 15px;
             transition: transform 0.3s ease;
         }
+
         .testimonial-img:hover {
             transform: scale(1.1);
         }
+
         .testimonial-stars {
             color: #ffc107;
             font-size: 1.2rem;
             margin-bottom: 10px;
         }
+
         .testimonial-text {
             font-style: italic;
             color: #555;
             margin-bottom: 15px;
         }
+
         .testimonial-author {
             font-weight: bold;
             color: #333;
         }
+
         .testimonial-context {
             font-size: 0.9rem;
             color: #6c757d;
         }
-        .carousel-control-prev, .carousel-control-next {
+
+        .carousel-control-prev,
+        .carousel-control-next {
             width: 5%;
             filter: invert(100%);
         }
+
         .carousel-indicators button {
             background-color: #007bff;
             width: 10px;
@@ -138,7 +150,7 @@
             border-radius: 50%;
         }
 
-     
+
         /* Responsive Adjustments */
         @media (max-width: 768px) {
             .hero-section {
@@ -172,6 +184,7 @@
                 width: 80px;
                 height: 80px;
             }
+
             .testimonial-card {
                 padding: 15px;
             }
@@ -267,43 +280,79 @@
             }
         }
     </style>
+    <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
 </head>
 
 <body>
+    <!-- Top Bar -->
+    <div class="topbar bg-white py-2 border-bottom d-md-block d-none">
+        <div class="container  d-flex justify-content-between align-items-center">
+            <div class="social-links text-secondary">
+                <a href="#" class="text-primary fs-4 me-2 border-end pe-2"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="text-primary fs-4 mx-2 border-end pe-2"><i class="fab fa-whatsapp"></i></a>
+                <a href="#" class="text-primary fs-4 ms-2"><i class="fab fa-facebook"></i></a>
+            </div>
+            <div class="contact-info text-primary">
+                <i class="fas fa-phone-alt me-1">
+                </i>
+                <strong>
+                    <a class="border-end pe-2" href="tel:+6350562100"> +91 6350562100</a>
+                </strong>
+                <i class="fas fa-envelope me-2"></i><strong>
+                    <a class="border-end pe-2" href="mailto:bk209203@gmail.com"> info@hospital.com</a>
+                </strong>
+            </div>
+        </div>
+    </div>
     <!-- Header -->
-    <header class="sticky-top bg-white shadow-sm">
+    <header class="sticky-top bg-white shadow-lg">
         <div class="container py-2">
             <div class="row align-items-center">
+                <!-- Logo (Always on Left) -->
                 <div class="col-6 col-md-3">
-                    <img src="/logo2.jpeg" alt="Hospital Logo" class="img-fluid" style="max-height: 50px;">
+                    <img src="https://www.jointsurgeon.in/images/upload/logo_2_1.jpg" alt="Hospital Logo"
+                        class="img-fluid" style="max-height: 50px;">
                 </div>
-                <div class="col-6 col-md-6">
-                    <nav class="navbar navbar-expand-md">
-                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+
+                <!-- Navbar & Toggle Button -->
+                <div class="col-6 col-md-9 d-flex justify-content-end align-items-center">
+                    <nav class="navbar navbar-expand-md w-100">
+                        <!-- Navbar Toggler (Right aligned) -->
+                        <button class="navbar-toggler ms-auto" type="button" data-bs-toggle="collapse"
                             data-bs-target="#navbarNav">
                             <span class="navbar-toggler-icon"></span>
                         </button>
+
+                        <!-- Navbar Items (Centered on large, left-aligned on small) -->
                         <div class="collapse navbar-collapse" id="navbarNav">
-                            <ul class="navbar-nav mx-auto">
-                                <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-                                <li class="nav-item"><a class="nav-link" href="aboutus.html">About Us</a></li>
-                                <li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
-                                <li class="nav-item"><a class="nav-link" href="Teams.html">Doctors</a></li>
-                                <li class="nav-item"><a class="nav-link" href="appointment.html">Appointments</a></li>
-                                <li class="nav-item"><a class="nav-link" href="contactus.html">Contact Us</a></li>
+                            <ul class="navbar-nav mx-md-auto text-center text-md-start">
+                                <li class="nav-item"><a class="nav-link" href="index.html"><strong>Home</strong></a>
+                                </li>
+                                <li class="nav-item"><a class="nav-link" href="aboutus.html"><strong>About
+                                            Us</strong></a></li>
+                                <li class="nav-item"><a class="nav-link"
+                                        href="services.html"><strong>Services</strong></a></li>
+                                <li class="nav-item"><a class="nav-link" href="Teams.html"><strong>Doctors</strong></a>
+                                </li>
+                                <li class="nav-item"><a class="nav-link"
+                                        href="appointment.html"><strong>Appointments</strong></a></li>
+                                <li class="nav-item"><a class="nav-link" href="contactus.html"><strong>Contact
+                                            Us</strong></a></li>
                             </ul>
                         </div>
                     </nav>
+
+                    <!-- Book Appointment Button (Desktop Only) -->
+                    <div class="d-none d-md-block">
+                        <a href="#" class="btn btn-primary ms-3">Book an Appointment</a>
+                    </div>
                 </div>
-                <div class="col-md-3 text-end d-none d-md-block">
-                    <a href="#" class="btn btn-primary">Book an Appointment</a>
-                </div>
-            </div>
-            <div class="emergency-contact text-center mt-2">
-                Emergency: <strong>1-800-555-HELP</strong>
             </div>
         </div>
     </header>
+
 
     <!-- Hero Section -->
     <section class="hero-section d-flex align-items-center text-dark">
@@ -311,7 +360,7 @@
             <h1 class="display-4 fw-bold mb-4">Welcome to Our Hospital</h1>
             <div class="mb-4">
                 <a href="#" class="btn btn-primary btn-lg me-2">Find a Doctor</a>
-                <a href="appointment.html" class="btn btn-outline-light btn-lg">Request an Appointment</a>
+                <a href="appointment.html" class="btn btn-primary btn-lg">Request an Appointment</a>
             </div>
             <div class="col-md-6 mx-auto">
                 <input type="search" class="form-control" placeholder="Search doctors, services, or locations...">
@@ -323,8 +372,9 @@
     <section class="py-5">
         <div class="container">
             <h2 class="text-center mb-4">Our Services</h2>
-            <div class="row row-cols-1 row-cols-md-3 g-4">
-                <div class="col">
+            <div class="row row-cols-1 row-cols-md-3 g-4" id="services-container" data-skeleton-count="3">
+                <!-- Actual Content (Initially hidden) -->
+                <div class="col content-hidden">
                     <a href="#" class="text-decoration-none">
                         <div class="card service-card h-100 text-center">
                             <img src="author1.jpg" class="card-img-top" alt="Cardiology">
@@ -334,7 +384,7 @@
                         </div>
                     </a>
                 </div>
-                <div class="col">
+                <div class="col content-hidden">
                     <a href="#" class="text-decoration-none">
                         <div class="card service-card h-100 text-center">
                             <img src="author2.jpg" class="card-img-top" alt="Pediatrics">
@@ -344,7 +394,7 @@
                         </div>
                     </a>
                 </div>
-                <div class="col">
+                <div class="col content-hidden">
                     <a href="#" class="text-decoration-none">
                         <div class="card service-card h-100 text-center">
                             <img src="author3.jpg" class="card-img-top" alt="Emergency">
@@ -362,8 +412,9 @@
     <section class="py-5 bg-light">
         <div class="container">
             <h2 class="text-center mb-4">Latest News & Articles</h2>
-            <div class="row">
-                <div class="col-md-4">
+            <div class="row" id="news-container" data-skeleton-count="3">
+                <!-- Actual Content (Initially hidden) -->
+                <div class="col-md-4 content-hidden">
                     <div class="card news-card">
                         <img src="https://placehold.co/300x200" class="card-img-top" alt="Article 1">
                         <div class="card-body">
@@ -373,7 +424,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-4 content-hidden">
                     <div class="card news-card">
                         <img src="https://placehold.co/300x200" class="card-img-top" alt="Article 2">
                         <div class="card-body">
@@ -383,8 +434,7 @@
                         </div>
                     </div>
                 </div>
-
-                <div class="col-md-4">
+                <div class="col-md-4 content-hidden">
                     <div class="card news-card">
                         <img src="https://placehold.co/300x200" class="card-img-top" alt="Article 2">
                         <div class="card-body">
@@ -407,9 +457,12 @@
             <h2 class="text-center mb-5">What Our Patients Say</h2>
             <div id="testimonialCarousel" class="carousel slide" data-bs-ride="carousel">
                 <div class="carousel-indicators">
-                    <button type="button" data-bs-target="#testimonialCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                    <button type="button" data-bs-target="#testimonialCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                    <button type="button" data-bs-target="#testimonialCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                    <button type="button" data-bs-target="#testimonialCarousel" data-bs-slide-to="0" class="active"
+                        aria-current="true" aria-label="Slide 1"></button>
+                    <button type="button" data-bs-target="#testimonialCarousel" data-bs-slide-to="1"
+                        aria-label="Slide 2"></button>
+                    <button type="button" data-bs-target="#testimonialCarousel" data-bs-slide-to="2"
+                        aria-label="Slide 3"></button>
                 </div>
                 <div class="carousel-inner">
                     <div class="carousel-item active">
@@ -422,7 +475,8 @@
                                 <i class="bi bi-star-fill"></i>
                                 <i class="bi bi-star-fill"></i>
                             </div>
-                            <p class="testimonial-text">"The staff was incredibly caring and professional. They made my recovery smooth and comfortable."</p>
+                            <p class="testimonial-text">"The staff was incredibly caring and professional. They made my
+                                recovery smooth and comfortable."</p>
                             <h6 class="testimonial-author">John Doe</h6>
                             <p class="testimonial-context">Treated for Cardiology, January 2025</p>
                         </div>
@@ -437,7 +491,8 @@
                                 <i class="bi bi-star-fill"></i>
                                 <i class="bi bi-star-half"></i>
                             </div>
-                            <p class="testimonial-text">"The emergency team saved my life. I’m forever grateful for their quick response."</p>
+                            <p class="testimonial-text">"The emergency team saved my life. I’m forever grateful for
+                                their quick response."</p>
                             <h6 class="testimonial-author">Jane Smith</h6>
                             <p class="testimonial-context">Emergency Patient, February 2025</p>
                         </div>
@@ -452,17 +507,20 @@
                                 <i class="bi bi-star-fill"></i>
                                 <i class="bi bi-star-fill"></i>
                             </div>
-                            <p class="testimonial-text">"Fantastic pediatric care for my daughter. The doctors were amazing!"</p>
+                            <p class="testimonial-text">"Fantastic pediatric care for my daughter. The doctors were
+                                amazing!"</p>
                             <h6 class="testimonial-author">Emily Johnson</h6>
                             <p class="testimonial-context">Parent, Pediatric Visit, March 2025</p>
                         </div>
                     </div>
                 </div>
-                <button class="carousel-control-prev" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="prev">
+                <button class="carousel-control-prev" type="button" data-bs-target="#testimonialCarousel"
+                    data-bs-slide="prev">
                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                     <span class="visually-hidden">Previous</span>
                 </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="next">
+                <button class="carousel-control-next" type="button" data-bs-target="#testimonialCarousel"
+                    data-bs-slide="next">
                     <span class="carousel-control-next-icon" aria-hidden="true"></span>
                     <span class="visually-hidden">Next</span>
                 </button>
@@ -470,62 +528,114 @@
         </div>
     </section>
 
- <!-- Footer -->
-<footer class="bg-dark text-white py-5">
-    <div class="container">
-        <div class="row g-4">
-            <!-- Contact Information -->
-            <div class="col-md-4">
-                <h5 class="mb-3">Contact Us</h5>
-                <p class="mb-2">123 Health St, Medical City</p>
-                <p class="mb-2">Phone: <a href="tel:5551234567" class="text-white text-decoration-none">(555) 123-4567</a></p>
-                <p class="mb-0">Email: <a href="mailto:info@hospital.com" class="text-white text-decoration-none">info@hospital.com</a></p>
-            </div>
-
-            <!-- Quick Links -->
-            <div class="col-md-4">
-                <h5 class="mb-3">Quick Links</h5>
-                <ul class="list-unstyled">
-                    <li class="mb-2"><a href="#" class="text-white text-decoration-none">Privacy Policy</a></li>
-                    <li class="mb-2"><a href="#" class="text-white text-decoration-none">Terms & Conditions</a></li>
-                    <li class="mb-0"><a href="#" class="text-white text-decoration-none">Careers</a></li>
-                </ul>
-            </div>
-
-            <!-- Social Media and Newsletter -->
-            <div class="col-md-4">
-                <h5 class="mb-3">Follow Us</h5>
-                <div class="mb-4">
-                    <a href="#" class="text-white me-3" aria-label="Facebook"><i class="bi bi-facebook fs-5"></i></a>
-                    <a href="#" class="text-white me-3" aria-label="Twitter"><i class="bi bi-twitter fs-5"></i></a>
-                    <a href="#" class="text-white" aria-label="LinkedIn"><i class="bi bi-linkedin fs-5"></i></a>
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-5">
+        <div class="container">
+            <div class="row g-4">
+                <!-- Contact Information -->
+                <div class="col-md-4">
+                    <h5 class="mb-3">Contact Us</h5>
+                    <p class="mb-2">123 Health St, Medical City</p>
+                    <p class="mb-2">Phone: <a href="tel:5551234567" class="text-white text-decoration-none">(555)
+                            123-4567</a></p>
+                    <p class="mb-0">Email: <a href="mailto:info@hospital.com"
+                            class="text-white text-decoration-none">info@hospital.com</a></p>
                 </div>
 
-                <h5 class="mb-3">Newsletter</h5>
-                <form class="newsletter-form">
-                    <div class="input-group">
-                        <input type="email" class="form-control" placeholder="Enter your email" aria-label="Email" required>
-                        <button type="submit" class="btn btn-primary">Subscribe</button>
-                    </div>
-                    <small class="form-text text-muted">We'll never share your email with anyone else.</small>
-                </form>
-            </div>
-        </div>
+                <!-- Quick Links -->
+                <div class="col-md-4">
+                    <h5 class="mb-3">Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="#" class="text-white text-decoration-none">Privacy Policy</a></li>
+                        <li class="mb-2"><a href="#" class="text-white text-decoration-none">Terms & Conditions</a></li>
+                        <li class="mb-0"><a href="#" class="text-white text-decoration-none">Careers</a></li>
+                    </ul>
+                </div>
 
-        <!-- Copyright -->
-        <div class="row mt-4">
-            <div class="col text-center">
-                <p class="mb-0">&copy; 2023 Hospital Name. All rights reserved.</p>
+                <!-- Social Media and Newsletter -->
+                <div class="col-md-4">
+                    <h5 class="mb-3">Follow Us</h5>
+                    <div class="mb-4">
+                        <a href="#" class="text-white me-3" aria-label="Facebook"><i
+                                class="bi bi-facebook fs-5"></i></a>
+                        <a href="#" class="text-white me-3" aria-label="Twitter"><i class="bi bi-twitter fs-5"></i></a>
+                        <a href="#" class="text-white" aria-label="LinkedIn"><i class="bi bi-linkedin fs-5"></i></a>
+                    </div>
+
+                    <h5 class="mb-3">Newsletter</h5>
+                    <form class="newsletter-form">
+                        <div class="input-group">
+                            <input type="email" class="form-control" placeholder="Enter your email" aria-label="Email"
+                                required>
+                            <button type="submit" class="btn btn-primary">Subscribe</button>
+                        </div>
+                        <small class="form-text text-muted">We'll never share your email with anyone else.</small>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Copyright -->
+            <div class="row mt-4">
+                <div class="col text-center">
+                    <p class="mb-0">&copy; 2023 Hospital Name. All rights reserved.</p>
+                </div>
             </div>
         </div>
-    </div>
-</footer>
+    </footer>
 
     <!-- Bootstrap JS and Popper.js -->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
     <!-- Bootstrap Icons -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css" rel="stylesheet">
+
+    <script>
+        // Reusable function to create a skeleton card
+        function createSkeletonCard() {
+            const skeletonCard = document.createElement("div");
+            skeletonCard.className = "col skeleton-card";
+            skeletonCard.innerHTML = `
+                <div class="card h-100 text-center">
+                    <div class="skeleton skeleton-image"></div>
+                    <div class="card-body">
+                        <div class="skeleton skeleton-text"></div>
+                    </div>
+                </div>
+            `;
+            return skeletonCard;
+        }
+
+        // Reusable function to apply skeleton loader to a container
+        function applySkeletonLoader(containerId, delay = 2000) {
+            const container = document.getElementById(containerId);
+            if (!container) {
+                console.error(`Container with ID "${containerId}" not found!`);
+                return;
+            }
+
+            const skeletonCount = parseInt(container.getAttribute("data-skeleton-count")) || 3;
+            const actualContent = container.querySelectorAll(".content-hidden");
+
+            // Add skeleton cards
+            for (let i = 0; i < skeletonCount; i++) {
+                container.appendChild(createSkeletonCard());
+            }
+
+            // Simulate loading delay and toggle content
+            setTimeout(() => {
+                const skeletonCards = container.querySelectorAll(".skeleton-card");
+                skeletonCards.forEach(card => card.remove()); // Remove skeleton cards
+                actualContent.forEach(content => content.style.display = "block"); // Show actual content
+            }, delay);
+        }
+
+        // Apply skeleton loader to sections on page load
+        document.addEventListener("DOMContentLoaded", function () {
+            applySkeletonLoader("services-container", 2000); // Apply to Services section
+            applySkeletonLoader("news-container", 2000); // Apply to News section
+        });
+    </script>
+
 </body>
 
 </html>

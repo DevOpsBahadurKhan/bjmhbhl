@@ -141,36 +141,69 @@
     </style>
 </head>
 <body>
- <!-- Header -->
- <header class="sticky-top bg-white shadow-sm">
+ <!-- Top Bar -->
+ <div class="topbar bg-white py-2 border-bottom d-md-block d-none">
+    <div class="container  d-flex justify-content-between align-items-center">
+        <div class="social-links text-secondary">
+            <a href="#" class="text-primary fs-4 me-2 border-end pe-2"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="text-primary fs-4 mx-2 border-end pe-2"><i class="fab fa-whatsapp"></i></a>
+            <a href="#" class="text-primary fs-4 ms-2"><i class="fab fa-facebook"></i></a>
+        </div>
+        <div class="contact-info text-primary">
+            <i class="fas fa-phone-alt me-1">
+            </i>
+            <strong>
+                <a class="border-end pe-2" href="tel:+6350562100"> +91 6350562100</a>
+            </strong>
+            <i class="fas fa-envelope me-2"></i><strong>
+                <a class="border-end pe-2" href="mailto:bk209203@gmail.com"> info@hospital.com</a>
+            </strong>
+        </div>
+    </div>
+</div>
+<!-- Header -->
+<header class="sticky-top bg-white shadow-lg">
     <div class="container py-2">
         <div class="row align-items-center">
+            <!-- Logo (Always on Left) -->
             <div class="col-6 col-md-3">
-                <img src="/logo.jpeg" alt="Hospital Logo" class="img-fluid" style="max-height: 50px;">
+                <img src="https://www.jointsurgeon.in/images/upload/logo_2_1.jpg" alt="Hospital Logo"
+                    class="img-fluid" style="max-height: 50px;">
             </div>
-            <div class="col-6 col-md-6">
-                <nav class="navbar navbar-expand-md">
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+
+            <!-- Navbar & Toggle Button -->
+            <div class="col-6 col-md-9 d-flex justify-content-end align-items-center">
+                <nav class="navbar navbar-expand-md w-100">
+                    <!-- Navbar Toggler (Right aligned) -->
+                    <button class="navbar-toggler ms-auto" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#navbarNav">
                         <span class="navbar-toggler-icon"></span>
                     </button>
+
+                    <!-- Navbar Items (Centered on large, left-aligned on small) -->
                     <div class="collapse navbar-collapse" id="navbarNav">
-                        <ul class="navbar-nav mx-auto">
-                            <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-                            <li class="nav-item"><a class="nav-link" href="aboutus.html">About Us</a></li>
-                            <li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
-                            <li class="nav-item"><a class="nav-link" href="Teams.html">Doctors</a></li>
-                            <li class="nav-item"><a class="nav-link" href="appointment.html">Appointments</a></li>
-                            <li class="nav-item"><a class="nav-link" href="contactus.html">Contact Us</a></li>
+                        <ul class="navbar-nav mx-md-auto text-center text-md-start">
+                            <li class="nav-item"><a class="nav-link" href="index.html"><strong>Home</strong></a>
+                            </li>
+                            <li class="nav-item"><a class="nav-link" href="aboutus.html"><strong>About
+                                        Us</strong></a></li>
+                            <li class="nav-item"><a class="nav-link"
+                                    href="services.html"><strong>Services</strong></a></li>
+                            <li class="nav-item"><a class="nav-link" href="Teams.html"><strong>Doctors</strong></a>
+                            </li>
+                            <li class="nav-item"><a class="nav-link"
+                                    href="appointment.html"><strong>Appointments</strong></a></li>
+                            <li class="nav-item"><a class="nav-link" href="contactus.html"><strong>Contact
+                                        Us</strong></a></li>
                         </ul>
                     </div>
                 </nav>
+
+                <!-- Book Appointment Button (Desktop Only) -->
+                <div class="d-none d-md-block">
+                    <a href="#" class="btn btn-primary ms-3">Book an Appointment</a>
+                </div>
             </div>
-            <div class="col-md-3 text-end d-none d-md-block">
-                <a href="#" class="btn btn-primary">Book an Appointment</a>
-            </div>
-        </div>
-        <div class="emergency-contact text-center mt-2">
-            Emergency: <strong>1-800-555-HELP</strong>
         </div>
     </div>
 </header>
