@@ -9,7 +9,7 @@
         async defer></script>
     <style>
         #map {
-            height: 400px; 
+            height: 400px;
             width: 100%;
         }
     </style>
@@ -44,7 +44,7 @@
             });
 
             // Add a click event listener to toggle the bounce animation
-            marker.addListener('click', function() {
+            marker.addListener('click', function () {
                 if (marker.getAnimation() !== null) {
                     marker.setAnimation(null);
                 } else {
@@ -66,7 +66,7 @@
 
                     // Add a bounce animation when the marker moves to the new location
                     marker.setAnimation(google.maps.Animation.BOUNCE);
-                    setTimeout(function() {
+                    setTimeout(function () {
                         marker.setAnimation(null);
                     }, 1500); // Stop the bounce animation after 1.5 seconds
                 });

@@ -283,13 +283,10 @@
                     <h3 class="text-center mb-4">Patient Details</h3>
                     <form id="patient-form">
                         <div class="mb-3">
-                            <label for="first-name" class="form-label">First Name</label>
+                            <label for="first-name" class="form-label">Patient Name</label>
                             <input type="text" class="form-control" id="first-name" required aria-label="First Name">
                         </div>
-                        <div class="mb-3">
-                            <label for="last-name" class="form-label">Last Name</label>
-                            <input type="text" class="form-control" id="last-name" required aria-label="Last Name">
-                        </div>
+                     
                         <div class="mb-3">
                             <label for="email" class="form-label">Email</label>
                             <input type="email" class="form-control" id="email" required aria-label="Email">
@@ -298,32 +295,10 @@
                             <label for="phone" class="form-label">Phone Number</label>
                             <input type="tel" class="form-control" id="phone" required aria-label="Phone Number" pattern="\(\d{3}\) \d{3}-\d{4}" placeholder="(123) 456-7890">
                         </div>
+                      
                         <div class="mb-3">
-                            <label for="contact-method" class="form-label">Best Method for Contacting You?</label>
-                            <select class="form-select" id="contact-method" required aria-label="Best method for contacting you">
-                                <option value="">Please Select</option>
-                                <option value="Email">Email</option>
-                                <option value="Phone">Phone</option>
-                            </select>
-                        </div>
-                        <div class="mb-3">
-                            <label for="contact-time" class="form-label">Best Time of Day to Reach You?</label>
-                            <select class="form-select" id="contact-time" required aria-label="Best time of day to reach you">
-                                <option value="">Please Select</option>
-                                <option value="Morning">Morning</option>
-                                <option value="Noon">Noon</option>
-                                <option value="Afternoon">Afternoon</option>
-                                <option value="Evening">Evening</option>
-                                <option value="Night">Night</option>
-                            </select>
-                        </div>
-                        <div class="mb-3">
-                            <label for="help" class="form-label">How Can We Help You?</label>
-                            <textarea class="form-control" id="help" rows="3" required aria-label="How can we help you"></textarea>
-                        </div>
-                        <div class="mb-3">
-                            <label for="notes" class="form-label">Additional Notes</label>
-                            <textarea class="form-control" id="notes" rows="3" aria-label="Additional notes"></textarea>
+                            <label for="notes" class="form-label">Additional Information/Comments</label>
+                            <textarea class="form-control" id="notes" rows="3" aria-label="Additional Information/Comments"></textarea>
                         </div>
                         <div class="text-center">
                             <button type="submit" class="btn btn-primary btn-lg">Book Appointment</button>

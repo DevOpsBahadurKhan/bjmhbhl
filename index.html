@@ -9,8 +9,6 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Custom CSS with Animations -->
     <style>
-        
-
         /* Hero Section */
         .hero-section {
             min-height: 600px;
@@ -70,7 +68,7 @@
         }
 
         /* Testimonials Section */
-        .testimonials-section {
+        /* .testimonials-section {
             background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
             padding: 60px 0;
             position: relative;
@@ -142,7 +140,7 @@
             width: 10px;
             height: 10px;
             border-radius: 50%;
-        }
+        } */
 
 
         /* Responsive Adjustments */
@@ -339,14 +337,14 @@
         <div class="hero-overlay"></div> <!-- Animated overlay -->
         <div class="container text-start position-relative z-1">
             <h1 class="display-4 fw-bold mb-4 floating-text">
-                <b style="color: #e4ba2e;">#1 Customer Satisfaction</b>
-               
+                <b style="color: #D4AF37;">#1. NABH Certified</b> <b class="text-light">Sports </b>
+                <!-- <b class="text-primary fs-1"></b> -->
             </h1>
             <p class="lead mb-4 typewriter-text" id="typewriter">
-                
+
             </p> <!-- Typewriter tagline -->
             <div class="mb-4 hero-buttons">
-                <h1 class="display-4 fw-bold mb-4 floating-text text-light"><b >Medical Center</b></h1>
+                <h1 class="display-4 fw-bold mb-4 floating-text text-light"><b>Injury Center</b></h1>
             </div>
         </div>
     </section>
@@ -433,7 +431,8 @@
                         <div class="card service-card h-100 text-center">
                             <img src="profile1.png" class="card-img-top" alt="Cardiology">
                             <div class="card-body">
-                                <h5 class="card-title">Cardiology</h5>
+                                <h5 class="card-title">Orthopedics</h5>
+
                             </div>
                         </div>
                     </a>
@@ -463,9 +462,12 @@
     </section>
 
     <!-- Featured Articles/News -->
-    <section class="py-5 bg-light">
+    <section class="py-5 bg-white">
         <div class="container">
-            <h2 class="text-center mb-4">Latest News & Articles</h2>
+            <h2 class="text-center mb-4">Keep up with Our Most Recent Medical News</h2>
+            <div class="text-center mb-5">
+                <img src="section-img.png" alt="" srcset="">
+            </div>
             <div class="row" id="news-container" data-skeleton-count="3">
                 <!-- Actual Content (Initially hidden) -->
                 <div class="col-md-4 content-hidden">
@@ -505,86 +507,257 @@
         </div>
     </section>
 
-    <!-- Testimonials Section -->
-    <section class="testimonials-section">
-        <div class="container">
-            <h2 class="text-center mb-5">What Our Patients Say</h2>
-            <div id="testimonialCarousel" class="carousel slide" data-bs-ride="carousel">
-                <div class="carousel-indicators">
-                    <button type="button" data-bs-target="#testimonialCarousel" data-bs-slide-to="0" class="active"
-                        aria-current="true" aria-label="Slide 1"></button>
-                    <button type="button" data-bs-target="#testimonialCarousel" data-bs-slide-to="1"
-                        aria-label="Slide 2"></button>
-                    <button type="button" data-bs-target="#testimonialCarousel" data-bs-slide-to="2"
-                        aria-label="Slide 3"></button>
-                </div>
-                <div class="carousel-inner">
-                    <div class="carousel-item active">
-                        <div class="testimonial-card fade-in">
-                            <img src="pt1.jpg" class="testimonial-img" alt="John Doe">
-                            <div class="testimonial-stars">
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                            </div>
-                            <p class="testimonial-text">"The staff was incredibly caring and professional. They made my
-                                recovery smooth and comfortable."</p>
-                            <h6 class="testimonial-author">John Doe</h6>
-                            <p class="testimonial-context">Treated for Cardiology, January 2025</p>
-                        </div>
-                    </div>
-                    <div class="carousel-item">
-                        <div class="testimonial-card fade-in">
-                            <img src="pt1.jpg" class="testimonial-img" alt="Jane Smith">
-                            <div class="testimonial-stars">
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-half"></i>
-                            </div>
-                            <p class="testimonial-text">"The emergency team saved my life. I’m forever grateful for
-                                their quick response."</p>
-                            <h6 class="testimonial-author">Jane Smith</h6>
-                            <p class="testimonial-context">Emergency Patient, February 2025</p>
-                        </div>
-                    </div>
-                    <div class="carousel-item">
-                        <div class="testimonial-card fade-in">
-                            <img src="pt1.jpg" class="testimonial-img" alt="Emily Johnson">
-                            <div class="testimonial-stars">
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                            </div>
-                            <p class="testimonial-text">"Fantastic pediatric care for my daughter. The doctors were
-                                amazing!"</p>
-                            <h6 class="testimonial-author">Emily Johnson</h6>
-                            <p class="testimonial-context">Parent, Pediatric Visit, March 2025</p>
-                        </div>
-                    </div>
-                </div>
-                <button class="carousel-control-prev" type="button" data-bs-target="#testimonialCarousel"
-                    data-bs-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Previous</span>
-                </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#testimonialCarousel"
-                    data-bs-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Next</span>
-                </button>
-            </div>
+    <style>
+        .feature-section {
+            position: relative;
+            /* Allows overlay and content to stack */
+            height: 300px;
+            /* Set height as needed */
+            background-image: url("fun-bg.jpg");
+            /* Fixed background */
+            background-size: cover;
+            /* Ensures image covers the section */
+            background-position: center;
+            /* Centers the image */
+            background-attachment: fixed;
+            /* Keeps background fixed while scrolling */
+            display: flex;
+            align-items: center;
+            /* Vertically center content */
+            justify-content: center;
+            /* Horizontally center content */
+        }
+
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            /* Dark overlay with 50% opacity */
+            z-index: 1;
+            /* Places overlay above background but below content */
+        }
+
+        .content {
+            position: relative;
+            z-index: 2;
+            /* Ensures content stays above overlay */
+            text-align: center;
+            color: white;
+            /* White text for contrast */
+            padding: 20px;
+        }
+
+        h1 {
+            font-size: 36px;
+            margin-bottom: 10px;
+        }
+
+        p {
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #007bff;
+            /* Blue button */
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+            /* Darker blue on hover */
+        }
+    </style>
+    <section class="feature-section my-5">
+        <div class="overlay"></div>
+        <div class="content">
+            <h1>Our Features</h1>
+            <p>Highlight your amazing features here with a stunning background.</p>
+            <button>Learn More</button>
         </div>
     </section>
+
+    <!-- Testimonials Section -->
+    <style>
+        .testimonial-section {
+            background: linear-gradient(135deg, #3200fb 0%, #0000ffe7 100%);
+            color: #fff;
+            padding: 80px 0;
+            position: relative;
+        }
+
+        .testimonial-section::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('client-bg.jpg') no-repeat center center/cover;
+            opacity: 0.2;
+        }
+
+        .testimonial-card {
+            background: #fff;
+            color: #333;
+            border-radius: 10px;
+            padding: 20px;
+            text-align: left;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .testimonial-card img {
+            width: 100%;
+            border-radius: 10px;
+        }
+
+        .testimonial-text {
+            margin-top: 15px;
+        }
+
+        /* Updated carousel controls */
+        .carousel-control-prev,
+        .carousel-control-next {
+            width: 50px;
+            height: 50px;
+            top: 50%;
+            transform: translateY(-50%);
+            opacity: 0.8;
+            transition: opacity 0.3s ease, background-color 0.3s ease;
+            background-color: rgba(0, 0, 0, 0.3);
+            border-radius: 50%;
+        }
+
+        .carousel-control-prev-icon,
+        .carousel-control-next-icon {
+            width: 25px;
+            height: 25px;
+            filter: invert(1);
+            transition: transform 0.2s ease;
+        }
+
+        .carousel-control-prev:hover,
+        .carousel-control-next:hover {
+            opacity: 1;
+            background-color: rgba(0, 0, 0, 0.6);
+        }
+
+        .carousel-control-prev:active,
+        .carousel-control-next:active {
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+
+        .carousel-control-prev:hover .carousel-control-prev-icon {
+            transform: translateX(-5px);
+        }
+
+        .carousel-control-next:hover .carousel-control-next-icon {
+            transform: translateX(5px);
+        }
+
+        .carousel-control-prev:focus,
+        .carousel-control-next:focus {
+            outline: none;
+            box-shadow: none;
+        }
+
+        @media (max-width: 768px) {
+            .testimonial-section {
+                padding: 50px 0;
+            }
+
+            .testimonial-card {
+                margin-bottom: 20px;
+            }
+        }
+    </style>
+    <div my-5>
+        <h2 class="text-center mb-4">Voices of Healing: Hear from Our Patients</h2>
+        <div class="text-center mb-5">
+            <img src="section-img.png" alt="" srcset="">
+        </div>
+        <section class="testimonial-section text-center">
+            <div class="container">
+
+                <div class="row align-items-center">
+                    <div class="col-lg-4 text-lg-start mb-4 mb-lg-0">
+                        <h2>Connect with other members</h2>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed diam nonummy nibh euismod
+                            tincidunt
+                            ut laoreet.</p>
+                        <a href="#" class="btn btn-light">Connect now</a>
+                    </div>
+                    <div class="col-lg-8">
+                        <div id="testimonialCarousel" class="carousel slide" data-bs-ride="carousel">
+                            <div class="carousel-inner">
+                                <div class="carousel-item active">
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <div class="testimonial-card">
+                                                <img src="author1.jpg" alt="Testimonial Image">
+                                                <div class="testimonial-text">
+                                                    <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit."</p>
+                                                    <strong>Michael</strong><br>
+                                                    <em>MDS Manufacturing</em>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="testimonial-card">
+                                                <img src="author2.jpg" alt="Testimonial Image">
+                                                <div class="testimonial-text">
+                                                    <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit."</p>
+                                                    <strong>Diane</strong><br>
+                                                    <em>ABC Rentals</em>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="testimonial-card">
+                                                <img src="author3.jpg" alt="Testimonial Image">
+                                                <div class="testimonial-text">
+                                                    <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit."</p>
+                                                    <strong>Allison</strong><br>
+                                                    <em>Grand Party Rental</em>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <button class="carousel-control-prev" type="button" data-bs-target="#testimonialCarousel"
+                                data-bs-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            </button>
+                            <button class="carousel-control-next" type="button" data-bs-target="#testimonialCarousel"
+                                data-bs-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
 
     <!-- Footer -->
     <footer class="bg-dark text-white py-5">
         <div class="container">
+
             <div class="row g-4">
                 <!-- Contact Information -->
                 <div class="col-md-4">
@@ -636,6 +809,9 @@
             </div>
         </div>
     </footer>
+
+
+
 
     <!-- Bootstrap JS and Popper.js -->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
